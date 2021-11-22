@@ -13,13 +13,13 @@ class TwitterBot:
         bot = self.bot
         bot.get('https://twitter.com/i/flow/login')
         time.sleep(3)
-        email=bot.find_element_by_name('session[username_or_email]')
-        password=bot.find_element_by_name('session[password]')
-        # email=bot.find_element_by_name('session[username_or_email]')
-        # password=bot.find_element_by_name('session[password]')
+        email=bot.find_element_by_name('username')
         email.clear()
-        password.clear()
         email.send_keys(self.username)
+        email.send_keys(Keys.RETURN)
+        time.sleep(3)
+        password=bot.find_element_by_name('password')
+        password.clear()
         password.send_keys(self.password)
         password.send_keys(Keys.RETURN)
         time.sleep(3)
@@ -46,6 +46,6 @@ class TwitterBot:
                     time.sleep(10)
 
 
-maneesh = TwitterBot("ManeeshWije", "maneeshmaneesh123")
+maneesh = TwitterBot("USERNAME", "PASSWORD")
 maneesh.login()
-maneesh.like_tweet('bitcoin')
+maneesh.like_tweet('KEYWORD')
